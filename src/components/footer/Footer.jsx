@@ -199,6 +199,7 @@ const Footer = () => {
               display: "flex",
               justifyContent: "center",
               alignItem: "center",
+              marginTop: "5rem",
             }}
           >
             <Button
@@ -221,7 +222,13 @@ const Footer = () => {
         </Row>
       </Row>
 
-      <Row>
+      <Row
+        style={{
+          backgroundColor: "transparent",
+          marginTop: "8rem",
+        }}
+      >
+        <div class="h_line"></div>
         {footerData.map((footer, footerIndex) => {
           return (
             <Col lg={3} key={footerIndex}>

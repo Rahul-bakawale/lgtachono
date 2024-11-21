@@ -18,7 +18,7 @@ function CustomCard({
   };
 
   return (
-    <Card style={{ ...defaultStyle, ...customStyle }}>
+    <Card style={{ ...defaultStyle, ...customStyle, marginRight: "18px" }}>
       {" "}
       {/* Merge default and custom styles */}
       <Card.Img variant="top" src={imgSrc} />

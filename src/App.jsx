@@ -3,7 +3,6 @@ import {
   Col,
   Container,
   Form,
-  FormControl,
   Image,
   InputGroup,
   Row,
@@ -14,23 +13,23 @@ import dashImg from "./assets/images/videosDash.jpg";
 import PaypalIcon from "./assets/images/paypal.svg";
 import GoogleIcon from "./assets/images/google.svg";
 import DropBoxIcon from "./assets/images/Dropbox_logo_2017.svg";
-import TutorialSection from "./components/tutorials/Tutorial";
-import Pattern from "./assets/images/patterns.svg";
 import Frame from "./assets/images/Frame.svg";
 import SearchIcon from "./assets/images/search.svg";
 import StarRating from "./components/card/StartRatting";
-import CourseFeatures from "./components/features/Feature";
-import PopularCourse from "./components/popularCourse/Popular";
-import ArrowImg11 from "./assets/images/arrow11.jpg";
-import ArrowImg1 from "./assets/images/arrow2.jpg";
-import Number1 from "./assets/images/Group.png";
-import Number2 from "./assets/images/Group (2).png";
-import Number3 from "./assets/images/Group (3).png";
-import Number4 from "./assets/images/Group (1).png";
 import Footer from "./components/footer/Footer";
-// import CourseWorkFlow from "./components/courseWorkFlow/WorkFlow";
-
+import CourseSteps from "./components/coursesteps/CourseSteps";
+import PopularCourseList from "./components/popularcourseList/PopularCourseList";
+import CourseFeaturesList from "./components/coursefeaturesList/CourseFeatureList";
+import TutorialList from "./components/tutorialsList/TutorialList";
+import PricingPlanList from "./components/pricingplanlist/PricingPlanList";
+import { useState } from "react";
+import testVideo from "./assets/images/SampleVideo_1280x720_10mb.mp4";
 function App() {
+  const [showVideo, setShowVideo] = useState(false);
+
+  const handleImageClick = () => {
+    setShowVideo(true); // Change state to show video
+  };
   return (
     <>
       <Container
@@ -39,7 +38,6 @@ function App() {
         style={{
           background:
             "linear-gradient(to right, rgba(224, 245, 250, 1), rgba(255, 253, 230, 1))",
-          // 'linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 253, 230, 1))',
         }}
       >
         <Container>
@@ -170,15 +168,13 @@ function App() {
               <Col>
                 <div
                   className=""
-                  style={{
-                    // backgroundImage: `url(${require("./assets/images/pp.jpg")})`,
-                    // backgroundSize: "cover",
-                    // backgroundRepeat: "no-repeat",
-                    // minWidth: "410px",
-                    border: "1px solid red",
-                  }}
+                  style={
+                    {
+                      // border: "1px solid red",
+                    }
+                  }
                 >
-                  <Image
+                  {/* <Image
                     src={dashImg}
                     style={{
                       width: "575px",
@@ -186,69 +182,53 @@ function App() {
                       marginRight: "55px",
                       marginTop: "70px",
                     }}
-                  />
+                  /> */}
+                  {!showVideo ? (
+                    <img
+                      src={dashImg}
+                      alt="Clickable"
+                      style={{
+                        width: "575px",
+                        height: "710px",
+                        marginRight: "55px",
+                        marginTop: "70px",
+                        cursor: "pointer",
+                        backgroundColor: "transparent",
+                      }}
+                      onClick={handleImageClick}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        width: "575px",
+                        height: "710px",
+                        marginTop: "70px",
+                      }}
+                    >
+                      <video
+                        width="100%"
+                        height="100%"
+                        controls
+                        autoPlay
+                        style={{ borderRadius: "10px" }}
+                      >
+                        <source src={testVideo} type="video/mp4" /> Your browser
+                        does not support the video tag.
+                      </video>
+                    </div>
+                  )}
                 </div>
               </Col>
             </Row>
           </div>
         </Container>
       </Container>
-      <TutorialSection />
-      <CourseFeatures />
-      <PopularCourse />
+      <TutorialList />
+      <CourseFeaturesList />
+      <PopularCourseList />
+      <CourseSteps />
       <Footer />
-      {/* <CourseWorkFlow /> */}
-      {/* <Container>
-        <Row>
-          <Row>Let’s see how it works</Row>
-          <Row lg={12} style={{ display: "flex", justifyContent: "center" }}>
-            <Col>
-              <Row style={{ display: "flex" }}>
-                <Col lg={6}>
-                  <Image src={Number1} />
-                </Col>
-
-                <Col lg={6}>
-                  <Image src={ArrowImg} />
-                </Col>
-              </Row>
-              <Row>dsagfdsjafsdjl</Row>
-            </Col>
-            <Col>
-              <Row style={{ display: "flex" }}>
-                <Col lg={6}>
-                  <Image src={Number1} />
-                </Col>
-
-                <Col lg={6}>
-                  <Image src={ArrowImg} />
-                </Col>
-              </Row>
-              <Row>dsagfdsjafsdjl</Row>
-            </Col>
-            <Col>
-              <Row style={{ display: "flex" }}>
-                <Col lg={6}>
-                  <Image src={Number1} />
-                </Col>
-
-                <Col lg={6}>
-                  <Image src={ArrowImg} />
-                </Col>
-              </Row>
-              <Row>dsagfdsjafsdjl</Row>
-            </Col>
-            <Col>
-              <Row style={{ display: "flex" }}>
-                <Col lg={6}>
-                  <Image src={Number1} />
-                </Col>
-              </Row>
-              <Row>dsagfdsjafsdjl</Row>
-            </Col>
-          </Row>
-        </Row>
-      </Container> */}
+      <PricingPlanList />
     </>
   );
 }

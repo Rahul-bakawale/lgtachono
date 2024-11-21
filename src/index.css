@@ -11,9 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.card {
-  --bs-card-bg: none ,
-  border: none,
-  border-radius: none
-
-}

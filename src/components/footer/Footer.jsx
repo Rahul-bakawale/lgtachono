@@ -5,7 +5,7 @@ import icon from "../../assets/images/plus.jpg";
 const Footer = () => {
   const cardContent = [
     {
-      title: "How to contact with riders emergency?",
+      title: "How to contact with riders emergency.?",
       subtitle: "",
     },
     {
